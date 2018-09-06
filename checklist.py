@@ -27,7 +27,7 @@ def read(index):
 
 #Update
 def update(index, item):
-    checklist[index] = item
+    checklist[int(index)] = str(item)
 
 #Destroy
 def destroy(index):
@@ -38,10 +38,10 @@ def list_all_items():
     for list_item in checklist:
         print("{} {}".format(index, list_item))
         index += 1
-
+# Mark Complete - Working On
 def mark_completed(index):
-    for list_item in checklist:
-        print ("√" + list_item)
+        # print ("√" + checklist[str(index)]
+        checklist[int(index)].append("√")
 
 def user_input(prompt):
         # the input function will display a message in the terminal
@@ -49,13 +49,13 @@ def user_input(prompt):
         user_input = input(prompt)
         return user_input
 
-#Select whichfunctions we want to run
+#Select which functions we want to run
 def select(function_code):
-    #Create item - Works
+    #Create item
     if function_code == "A":
         input_item = user_input("Add to list: ")
         create(input_item)
-    #Delete item - Work
+    #Delete item
     elif function_code == "D":
         input_item = user_input("Which item do you want to delete? ")
         destroy(input_item)
@@ -68,11 +68,16 @@ def select(function_code):
 
     # Update item
     elif function_code == "U":
-        input_item = user_input("What is the index and name of the item you want to update? ")
-        update(input_item)
+        input_item = user_input("What is the index of the item you want to update? ")
+        input_update = user_input("What item would you like to replace it with? ")
+        update(input_item, input_update)
     # Print all items - Works
     elif function_code == "P":
         list_all_items()
+    #Mark Complete
+    elif function_code == "C":
+        input_item = user_input("What item would you like to mark complete?")
+        mark_completed(input_item)
     # Close out of program - Works
     elif function_code =="Q":
         #This is where we want to stop our loop
