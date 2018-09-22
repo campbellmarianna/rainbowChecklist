@@ -38,10 +38,13 @@ def list_all_items():
     for list_item in checklist:
         print("{} {}".format(index, list_item))
         index += 1
-# Mark Complete - Working On
+# Mark Complete - Add code here that marks an item as completed
 def mark_completed(index):
         # print ("√" + checklist[str(index)]
-        checklist[int(index)].append("√")
+        checklist[int(index)] = "√" + checklist[index]
+        # print("{} √{}".format(index, list_item))
+        # checklist[int(index)] =
+        #return("√" + checklist[index])
 
 def user_input(prompt):
         # the input function will display a message in the terminal
@@ -52,34 +55,34 @@ def user_input(prompt):
 #Select which functions we want to run
 def select(function_code):
     #Create item
-    if function_code == "A":
+    if function_code == "A" or function_code == "a":
         input_item = user_input("Add to list: ")
         create(input_item)
     #Delete item
-    elif function_code == "D":
+    elif function_code == "D" or function_code == "d":
         input_item = user_input("Which item do you want to delete? ")
         destroy(input_item)
     #Read item
-    elif function_code =="R":
+    elif function_code =="R" or function_code == "r":
         input_item = user_input("What is the number of that item? ")
 
         #Remember that item_index (was used as the variable that holds user input and inside read below) must actually exist or our program will crash.
         read(int(input_item))
 
     # Update item
-    elif function_code == "U":
+    elif function_code == "U" or function_code == "u":
         input_item = user_input("What is the index of the item you want to update? ")
         input_update = user_input("What item would you like to replace it with? ")
         update(input_item, input_update)
-    # Print all items - Works
-    elif function_code == "P":
+    # Print all items
+    elif function_code == "P" or function_code == "p":
         list_all_items()
     #Mark Complete
-    elif function_code == "C":
-        input_item = user_input("What item would you like to mark complete?")
-        mark_completed(input_item)
-    # Close out of program - Works
-    elif function_code =="Q":
+    elif function_code == "C" or function_code == "c":
+        input_item = input("What item would you like to mark complete? ")
+        mark_completed(int(input_item))
+    # Close out of program
+    elif function_code =="Q" or function_code == "q":
         #This is where we want to stop our loop
         return False
     #Catch all - Works
